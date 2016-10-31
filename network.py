@@ -38,7 +38,7 @@ def relu_conv(bottom, nout, ks=1, stride=1, pad=0):
     return relu, L.Convolution(relu, kernel_size=ks, stride=stride,
                                num_output=nout, pad=pad,bias_term=False, weight_filler=dict(type='xavier'))
     
-def conv_relu(bottom, nout, ks=3, stride=1, pad=2,group=1):
+def conv_relu(bottom, nout, ks=3, stride=1, pad=1,group=1):
     conv = L.Convolution(bottom, kernel_size=ks, stride=stride,
         num_output=nout, pad=pad, group=group,bias_term=False, weight_filler=dict(type='xavier'))
       

@@ -20,7 +20,7 @@ path = '/Users/name/folder/' #path to your folder
 #%% Define the layers
 
 
-def conv(bottom, nout, ks=5, stride=1, pad=1):
+def conv(bottom, nout, ks=3, stride=1, pad=1):
     conv = L.Convolution(bottom, kernel_size=ks, stride=stride,
         num_output=nout, pad=pad,bias_term=False, weight_filler=dict(type='xavier'))
         
@@ -38,7 +38,7 @@ def relu_conv(bottom, nout, ks=1, stride=1, pad=0):
     return relu, L.Convolution(relu, kernel_size=ks, stride=stride,
                                num_output=nout, pad=pad,bias_term=False, weight_filler=dict(type='xavier'))
     
-def conv_relu(bottom, nout, ks=5, stride=1, pad=2,group=1):
+def conv_relu(bottom, nout, ks=3, stride=1, pad=2,group=1):
     conv = L.Convolution(bottom, kernel_size=ks, stride=stride,
         num_output=nout, pad=pad, group=group,bias_term=False, weight_filler=dict(type='xavier'))
       
@@ -65,7 +65,7 @@ def lenethdf5(hdf5 , batch_size):
     n.pool3 = max_pool(n.relu3)      
     
     # fully convolutional
-    n.fc1, n.rlfc1  = conv_relu(n.pool3, 512, ks=1, pad=0)
+    n.fc1, n.rlfc1  = conv_relu(n.pool3, 512, ks=3, pad=1)
     
                                
     n.decov5 = deconv(n.rlfc1, 128, pad=1)
@@ -173,7 +173,7 @@ def lenethdf5d():
     n.pool3 = max_pool(n.relu3)      
     
     # fully convolutional
-    n.fc1, n.rlfc1  = conv_relu(n.pool3, 512, ks=1, pad=0)
+    n.fc1, n.rlfc1  = conv_relu(n.pool3, 512, ks=3, pad=1)
     
                                
     n.decov5 = deconv(n.rlfc1, 128, pad=1)

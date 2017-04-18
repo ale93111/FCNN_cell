@@ -15,7 +15,7 @@ import pandas as pd
 import caffe
 from caffe import layers as L, params as P
 
-path = '/Users/name/folder/' #path to your folder
+path = '/home/alessandro/Documenti/FCNN_cell/' #path to your folder
 
 #%% Define the layers
 
